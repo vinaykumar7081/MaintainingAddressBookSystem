@@ -16,6 +16,7 @@ namespace MaintainingAddressBook
                 FirstName = Console.ReadLine(),
                 LastName = Console.ReadLine(),
                 Address = Console.ReadLine(),
+                City = Console.ReadLine(),
                 State = Console.ReadLine(),
                 EmailAddress = Console.ReadLine(),
                 PostalCode = Convert.ToInt32(Console.ReadLine()),
@@ -26,6 +27,7 @@ namespace MaintainingAddressBook
                 FirstName = Console.ReadLine(),
                 LastName = Console.ReadLine(),
                 Address = Console.ReadLine(),
+                City = Console.ReadLine(),
                 State = Console.ReadLine(),
                 EmailAddress = Console.ReadLine(),
                 PostalCode = Convert.ToInt32(Console.ReadLine()),
@@ -42,7 +44,7 @@ namespace MaintainingAddressBook
         {
             foreach (var contact in addressBook)
             {
-                Console.WriteLine(contact.FirstName + " " + contact.LastName + " " + contact.Address + " " + contact.State + " " + contact.EmailAddress + " " + " " + contact.PostalCode + " " + contact.MobileNumber);
+                Console.WriteLine(contact.FirstName + " " + contact.LastName + " " + contact.Address +" "+ contact.City + " " + contact.State + " " + contact.EmailAddress + " " + " " + contact.PostalCode + " " + contact.MobileNumber);
             }
         }
 
