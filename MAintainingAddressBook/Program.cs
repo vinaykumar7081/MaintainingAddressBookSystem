@@ -15,7 +15,7 @@ public class Program
         addressBook.EmailAddress = Console.ReadLine();
         addressBook.PostalCode = Convert.ToInt32(Console.ReadLine());
         addressBook.MobileNumber = Convert.ToInt64(Console.ReadLine());
-        Console.WriteLine(addressBook.FirstName + " " + addressBook.LastName + " " + addressBook.Address + " " + addressBook.State + " " + addressBook.EmailAddress + " " + addressBook.PostalCode + " " + addressBook.MobileNumber);
+        Console.WriteLine(addressBook.FirstName + " " + addressBook.LastName + " " + addressBook.Address +" "+ addressBook.City + " " + addressBook.State + " " + addressBook.EmailAddress + " " + addressBook.PostalCode + " " + addressBook.MobileNumber);
 
     }
 }
