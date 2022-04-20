@@ -5,17 +5,25 @@ public class Program
     public static void Main(String[] args)
     {
         Console.WriteLine("********** Welcome in this Address Book ************");
-        Contact  addressBook = new Contact();
+        AddressBook addressBook = new AddressBook();
         Console.WriteLine("Please Enter the Information");
-        addressBook.FirstName = Console.ReadLine();
-        addressBook.LastName = Console.ReadLine();
-        addressBook.Address = Console.ReadLine();
-        addressBook.City= Console.ReadLine();
-        addressBook.State = Console.ReadLine();
-        addressBook.EmailAddress = Console.ReadLine();
-        addressBook.PostalCode = Convert.ToInt32(Console.ReadLine());
-        addressBook.MobileNumber = Convert.ToInt64(Console.ReadLine());
-        Console.WriteLine(addressBook.FirstName + " " + addressBook.LastName + " " + addressBook.Address +" "+ addressBook.City + " " + addressBook.State + " " + addressBook.EmailAddress + " " + addressBook.PostalCode + " " + addressBook.MobileNumber);
+        bool check = true;
+        Console.WriteLine(" Enter the Zero to Stop The Execution 0\n Display The Information1\n Edit the Information 2\n");
 
+        while (check)
+        {
+            Console.WriteLine("***** Please Enter The Above Information *******");
+            int option = Convert.ToInt32(Console.ReadLine());
+            switch (option)
+            {
+                case 1: addressBook.Display(); break;
+                case 2:
+                    Console.WriteLine("Enter the Name for Edit the Information");
+                    string name = Console.ReadLine();
+                    addressBook.EditContactInAddressBook(name); break;
+                case 0: check = false; break;
+            }
+
+        }
     }
 }
