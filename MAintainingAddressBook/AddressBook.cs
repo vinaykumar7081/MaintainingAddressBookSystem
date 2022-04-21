@@ -13,25 +13,25 @@ namespace MaintainingAddressBook
         {
             Contact address1 = new Contact()
             {
-                FirstName = "Vijay",
-                LastName = "Kumar",
-                Address = "Indranagar",
-                City = "Lucknow",
-                State = "Utter Pradesh",
-                EmailAddress = "vijay123@gmail.com",
-                PostalCode = 226021,
-                MobileNumber = 9721944611
+                FirstName = "Sanjay",
+                LastName = "Pratap",
+                Address = "Gomatinagar",
+                City = "Luck",
+                State = "UP",
+                EmailAddress = "sanjay123@gmail.com",
+                PostalCode = 226026,
+                MobileNumber = 9721954611
             };
             Contact address2 = new Contact()
             {
-                FirstName = "Arun",
-                LastName = "Arya",
-                Address = "CSMT",
-                City = "Mumbai",
-                State = "Maharastra",
-                EmailAddress = "arun123@gmail.com",
-                PostalCode = 400008,
-                MobileNumber = 9721945611
+                FirstName = "Pramod",
+                LastName = "Pratap",
+                Address = "Haryana",
+                City = "Haryana",
+                State = "Delhi",
+                EmailAddress = "pramod123@gmail.com",
+                PostalCode = 400009,
+                MobileNumber = 9722945611
             };
             Console.WriteLine("Enter the FirstName LastName Address City State Email postalCode mobile Number");
             Contact address3 = new Contact()
@@ -145,6 +145,7 @@ namespace MaintainingAddressBook
                     DeletingContactINAddressBook (name);
                 }
             }
+            dictionaryName .Remove (name);
         }
         public bool NameExists(string name)
         {
