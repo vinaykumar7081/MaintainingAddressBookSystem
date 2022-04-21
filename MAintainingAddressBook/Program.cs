@@ -28,7 +28,7 @@ public class Program
                 case 4:
                     Console.WriteLine("Enter the Name for Adding data in Dictionary ");
                     string dictionaryNameame = Console.ReadLine();
-                    addressBook.DeletingContactINAddressBook(dictionaryNameame); break;
+                    addressBook.AddDictionary(dictionaryNameame); break;
                 case 0: check = false; break;
             }
 
