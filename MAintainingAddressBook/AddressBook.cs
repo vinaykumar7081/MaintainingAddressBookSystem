@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace MaintainingAddressBook
 {
@@ -14,36 +15,25 @@ namespace MaintainingAddressBook
         {
             Contact address1 = new Contact()
             {
-<<<<<<< HEAD
-                FirstName ="Ram",
+                FirstName ="Daya",
                 LastName = "Shanker",
-                Address = "VijayNagar",
-                City = "Gagiyabad",
-                State ="Utter Pradesh",
-                EmailAddress = "ram123@gmail.com",
-                PostalCode = 226031,
-                MobileNumber = 9721844611
-=======
-                FirstName = "Vijay",
-                LastName = "Kumar",
-                Address = "Indranagar",
-                City = "Lucknow",
-                State = "Utter Pradesh",
-                EmailAddress = "vijay123@gmail.com",
-                PostalCode = 226021,
-                MobileNumber = 9721944611
->>>>>>> UC5_AddingMultiplePersonInAddressBook
+                Address = "RayRoad",
+                City = "Mumbai",
+                State ="Maharstra",
+                EmailAddress = "daya123@gmail.com",
+                PostalCode = 400009,
+                MobileNumber = 972174461
             };
             Contact address2 = new Contact()
             {
-                FirstName = "Arun",
+                FirstName = "Sameer",
                 LastName = "Arya",
-                Address = "CSMT",
+                Address = "CSMTR",
                 City = "Mumbai",
                 State = "Maharastra",
-                EmailAddress = "arun123@gmail.com",
-                PostalCode = 400008,
-                MobileNumber = 9721945611
+                EmailAddress = "sameer123@gmail.com",
+                PostalCode = 400006,
+                MobileNumber = 9721955611
             };
             Console.WriteLine("Enter the FirstName LastName Address City State Email postalCode mobile Number");
             Contact address3 = new Contact()
@@ -72,11 +62,11 @@ namespace MaintainingAddressBook
                 Console.WriteLine(contact.FirstName + " " + contact.LastName + " " + contact.Address +" "+ contact.City + " " + contact.State + " " + contact.EmailAddress + " " + " " + contact.PostalCode + " " + contact.MobileNumber);
             }
         }
-        public void EditContactInAddressBook(string name)
+        public void EditContactInAddressBook(string contactName)
         {
             foreach (var contact in addressBook)
             {
-                if (contact.FirstName.Equals(name))
+                if (contact.FirstName.Equals(contactName))
                 {
                     Console.WriteLine("Enter the Option To Update");
                     int option = Convert.ToInt32(Console.ReadLine ());
@@ -135,6 +125,17 @@ namespace MaintainingAddressBook
             dictionaryName.Add (name,addressBook);
             }
             Console.WriteLine(dictionaryName);
+        }
+        public void EditingDictionary(string name, string contactName)
+        {
+        foreach(var data in dictionaryName)
+            {
+                if (dictionaryName.Keys.Equals(name))
+                {
+                    addressBook = data.Value;
+                    EditContactInAddressBook (contactName);
+                }
+            }
         }
         public bool NameExists(string name)
         {

@@ -1,6 +1,6 @@
 ﻿using System;
 using MaintainingAddressBook;
-public class Program
+public class Program 
 {
     public static void Main(String[] args)
     {
@@ -8,7 +8,7 @@ public class Program
         AddressBook addressBook = new AddressBook();
         Console.WriteLine("Please Enter the Information");
         bool check = true;
-        Console.WriteLine(" Enter the Zero to Stop The Execution 0\n Display The Information1\n Edit the Information 2\n Delete The Information 3\n Add Data in the Dictionary 4\n");
+        Console.WriteLine(" Enter the Zero to Stop The Execution 0\n Display The Information1\n Edit the Information 2\n Delete The Information 3\n Add Data in the Dictionary 4\n EditingDictionary Data in the AddressBook");
 
         while (check)
         {
@@ -27,8 +27,13 @@ public class Program
                     addressBook.DeletingContactINAddressBook (name1); break;
                 case 4:
                     Console.WriteLine("Enter the Name for Adding data in Dictionary ");
-                    string dictionaryNameame = Console.ReadLine();
-                    addressBook.DeletingContactINAddressBook(dictionaryNameame); break;
+                    string dictionaryName = Console.ReadLine();
+                    addressBook.AddDictionary (dictionaryName); break;
+                case 5:
+                    Console.WriteLine("Enter the Name for Adding data in Dictionary ");
+                    string dictName = Console.ReadLine();
+                    string contactName= Console.ReadLine();
+                    addressBook.EditingDictionary(dictName, contactName); break;
                 case 0: check = false; break;
             }
 
