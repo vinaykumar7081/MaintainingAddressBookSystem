@@ -9,10 +9,33 @@ namespace MaintainingAddressBook
     public class AddressBook
     {
         List<Contact> addressBook = new List<Contact>();
+        Dictionary<string, List<Contact>> dictionaryName = new Dictionary<string, List<Contact>>();   
         public AddressBook()
         {
-            Console.WriteLine("Enter the Data");
-            Contact address = new Contact()
+            Contact address1 = new Contact()
+            {
+                FirstName = "Vijay",
+                LastName = "Kumar",
+                Address = "Indranagar",
+                City = "Lucknow",
+                State = "Utter Pradesh",
+                EmailAddress = "vijay123@gmail.com",
+                PostalCode = 226021,
+                MobileNumber = 9721944611
+            };
+            Contact address2 = new Contact()
+            {
+                FirstName = "Arun",
+                LastName = "Arya",
+                Address = "CSMT",
+                City = "Mumbai",
+                State = "Maharastra",
+                EmailAddress = "arun123@gmail.com",
+                PostalCode = 400008,
+                MobileNumber = 9721945611
+            };
+            Console.WriteLine("Enter the FirstName LastName Address City State Email postalCode mobile Number");
+            Contact address3 = new Contact()
             {
                 FirstName = Console.ReadLine(),
                 LastName = Console.ReadLine(),
@@ -23,7 +46,9 @@ namespace MaintainingAddressBook
                 PostalCode = Convert.ToInt32(Console.ReadLine()),
                 MobileNumber = Convert.ToInt64(Console.ReadLine())
             };           
-            addressBook.Add(address);
+            addressBook.Add(address1);
+            addressBook.Add(address2);
+            addressBook.Add(address3);
         }
         public void AddContactToAddressBook(Contact contact)
         {
@@ -88,6 +113,28 @@ namespace MaintainingAddressBook
             addressBook.Remove(delete);
             Display();
         }
-
+        public void AddDictionary(string name)
+        {
+            if (dictionaryName == null)
+            { 
+            dictionaryName .Add (name,addressBook);
+            }
+            if (NameExists(name) == false)
+            { 
+            dictionaryName.Add (name,addressBook);
+            }
+            Console.WriteLine(dictionaryName);
+        }
+        public bool NameExists(string name)
+        {
+            foreach (var data in dictionaryName.Keys)
+            {
+                if (data.Equals(name))
+                { 
+                return true;
+                }
+            }
+            return false;
+        }
     }
 }
