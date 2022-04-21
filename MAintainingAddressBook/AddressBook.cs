@@ -13,14 +13,14 @@ namespace MaintainingAddressBook
         {
             Contact address1 = new Contact()
             {
-                FirstName ="Vijay",
-                LastName = "Kumar",
-                Address = "Indranagar",
-                City = "Lucknow",
+                FirstName ="Ram",
+                LastName = "Shanker",
+                Address = "VijayNagar",
+                City = "Gagiyabad",
                 State ="Utter Pradesh",
-                EmailAddress = "vijay123@gmail.com",
-                PostalCode = 226021,
-                MobileNumber = 9721944611
+                EmailAddress = "ram123@gmail.com",
+                PostalCode = 226031,
+                MobileNumber = 9721844611
             };
             Contact address2 = new Contact()
             {
