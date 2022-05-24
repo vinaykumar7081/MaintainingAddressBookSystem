@@ -18,4 +18,5 @@ namespace MaintainingAddressBook
         public int PostalCode { get; set; }
         public long MobileNumber { get; set; }
     }
+
 }

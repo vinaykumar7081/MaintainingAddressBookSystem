@@ -9,7 +9,7 @@ namespace MaintainingAddressBook
     {
         List<Contact> addressBook = new List<Contact>();
         Dictionary<string, List<Contact>> dictionaryName = new Dictionary<string, List<Contact>>();   
-        public AddressBook()
+        public  AddressBook()
         {
             Contact address1 = new Contact()
             {
@@ -99,17 +99,16 @@ namespace MaintainingAddressBook
                 Display();
             }
         }
-        public void DeletingContactINAddressBook(string name)
+        public void DeletingContactINAddressBook(string name) //vinay
         {
             Contact delete = new Contact();
-            foreach (var contact in addressBook)
+            foreach (Contact contact in addressBook)
             {
                 if (contact.FirstName.Equals(name))
                 {
-                    delete = contact;
+                    addressBook.Remove(contact);
                 }
             }
-            addressBook.Remove(delete);
             Display();
         }
         public void AddDictionary(string name)
@@ -131,8 +130,8 @@ namespace MaintainingAddressBook
                 if (dictionaryName.Keys.Equals(name))
                 {
                     addressBook = data.Value;
-                    EditContactInAddressBook(contactName);
                 }
+                EditContactInAddressBook(contactName);
             }
         }
         public void DeleteDictionaryData(string name)
