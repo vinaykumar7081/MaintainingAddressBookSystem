@@ -27,27 +27,27 @@ namespace MaintainingAddressBook
                 FirstName = "Pramod",
                 LastName = "Pratap",
                 Address = "Haryana",
-                City = "Haryana",
+                City = "Luck",
                 State = "Delhi",
                 EmailAddress = "pramod123@gmail.com",
                 PostalCode = 400009,
                 MobileNumber = 9722945611
             };
-            Console.WriteLine("Enter the FirstName LastName Address City State Email postalCode mobile Number");
-            Contact address3 = new Contact()
-            {
-                FirstName = Console.ReadLine(),
-                LastName = Console.ReadLine(),
-                Address = Console.ReadLine(),
-                City = Console.ReadLine(),
-                State = Console.ReadLine(),
-                EmailAddress = Console.ReadLine(),
-                PostalCode = Convert.ToInt32(Console.ReadLine()),
-                MobileNumber = Convert.ToInt64(Console.ReadLine())
-            };           
+            //Console.WriteLine("Enter the FirstName LastName Address City State Email postalCode mobile Number");
+            //Contact address3 = new Contact()
+            //{
+            //    FirstName = Console.ReadLine(),
+            //    LastName = Console.ReadLine(),
+            //    Address = Console.ReadLine(),
+            //    City = Console.ReadLine(),
+            //    State = Console.ReadLine(),
+            //    EmailAddress = Console.ReadLine(),
+            //    PostalCode = Convert.ToInt32(Console.ReadLine()),
+            //    MobileNumber = Convert.ToInt64(Console.ReadLine())
+            //};           
             addressBook.Add(address1);
             addressBook.Add(address2);
-            addressBook.Add(address3);
+           // addressBook.Add(address3);
         }
         public void AddContactToAddressBook(Contact contact)
         {
@@ -156,6 +156,23 @@ namespace MaintainingAddressBook
                 }
             }
             return false;
+        }
+        public void SearchingPersonInCity(string name)
+        {
+            foreach (var data in dictionaryName)
+            {
+                 if(data.Key.Equals(name))
+                 {
+                    foreach (var contact in addressBook)
+                    {
+                        if (contact.FirstName.Equals(name))
+                        {
+                            Console.WriteLine(contact.FirstName + " " + contact.LastName + " " + contact.Address + " " + contact.City + " " + contact.State + " " + contact.EmailAddress + " " + " " + contact.PostalCode + " " + contact.MobileNumber);
+                        }
+                    }
+                   // Console.WriteLine(data.Key+" "+data.Value);
+                 }
+            }
         }
     }
 }
