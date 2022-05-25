@@ -158,21 +158,15 @@ namespace MaintainingAddressBook
             }
             return false;
         }
-        public void SearchingPersonInCity(string name)
+        public void SearchingPersonInCity(string cityName)
         {
-            foreach (var data in dictionaryName)
+            foreach (var contact in addressBook)
             {
-                 if(data.Key.Equals(name))
-                 {
-                    foreach (var contact in addressBook)
-                    {
-                        if (contact.FirstName.Equals(name))
-                        {
-                            Console.WriteLine(contact.FirstName + " " + contact.LastName + " " + contact.Address + " " + contact.City + " " + contact.State + " " + contact.EmailAddress + " " + " " + contact.PostalCode + " " + contact.MobileNumber);
-                        }
-                    }
-                   // Console.WriteLine(data.Key+" "+data.Value);
-                 }
+                if (contact.City.Equals(cityName))
+                {
+                    Console.WriteLine(contact.FirstName + " " + contact.LastName + " " + contact.Address + " " + contact.City + " " + contact.State + " " + contact.EmailAddress + " " + " " + contact.PostalCode + " " + contact.MobileNumber);
+                }
+                
             }
         }
     }

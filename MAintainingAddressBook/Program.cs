@@ -39,9 +39,9 @@ public class Program
                     string deleteName = Console.ReadLine();
                     addressBook.DeleteDictionaryData(deleteName); break;
                 case 8:
-                    Console.WriteLine("Enter the Name for Searchin Person City in Dictionary ");
-                    string personeName = Console.ReadLine();
-                    addressBook.SearchingPersonInCity(personeName); break;
+                    Console.WriteLine("Enter the City Name for Searchin Person City in Dictionary ");
+                    string cityName = Console.ReadLine();
+                    addressBook.SearchingPersonInCity(cityName); break;
                 case 0: check = false; break;
                     default: Console.WriteLine("Please Enter the Valid Option"); break;
             }
