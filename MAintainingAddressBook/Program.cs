@@ -8,7 +8,7 @@ public class Program
         AddressBook addressBook = new AddressBook();
         Console.WriteLine("Please Enter the Information");
         bool check = true;
-        Console.WriteLine(" Enter the Zero to Stop The Execution 0\n Display The Information1\n Edit the Information 2\n Delete The Information 3\n Add Data in the Dictionary 4\n EditingDictionary Data in the AddressBook 5\n  Deleting data from Dictionary 6\n Searching Person in City 8\n" );
+        Console.WriteLine(" Enter the Zero to Stop The Execution 0\n Display The Information1\n Edit the Information 2\n Delete The Information 3\n Add Data in the Dictionary 4\n EditingDictionary Data in the AddressBook 5\n  Deleting data from Dictionary 6\n Searching Person in City 8\n Searching Person Details With The Name Of City 9\n" );
 
         while (check)
         {
@@ -39,9 +39,15 @@ public class Program
                     string deleteName = Console.ReadLine();
                     addressBook.DeleteDictionaryData(deleteName); break;
                 case 8:
-                    Console.WriteLine("Enter the Name for Searchin Person City in Dictionary ");
-                    string personeName = Console.ReadLine();
-                    addressBook.SearchingPersonInCity(personeName); break;
+                    Console.WriteLine("Enter the Person And City Name for Searchin Person City in Dictionary ");
+                    string cityName = Console.ReadLine();
+                    addressBook.SearchingPersonInCity( cityName); break;
+                case 9:
+                    Console.WriteLine("Enter the City Name  for Searching Person City in Dictionary ");
+                    string city = Console.ReadLine();
+                   
+                    addressBook.MaintingDictionaryWithCityAndPerson(city);
+                    break;
                 case 0: check = false; break;
                     default: Console.WriteLine("Please Enter the Valid Option"); break;
             }

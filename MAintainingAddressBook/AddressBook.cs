@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-namespace MaintainingAddressBook
+﻿namespace MaintainingAddressBook
 {
     public class AddressBook
     {
         List<Contact> addressBook = new List<Contact>();
-        Dictionary<string, List<Contact>> dictionaryName = new Dictionary<string, List<Contact>>();   
+        Dictionary<string, List<Contact>> dictionaryName = new Dictionary<string, List<Contact>>(); 
+        Dictionary<string,string> cityPerson=new Dictionary<string,string>();
+        Dictionary<string,string> statePerson=new Dictionary<string,string>();
         public  AddressBook()
         {
             Contact address1 = new Contact()
@@ -157,21 +154,30 @@ namespace MaintainingAddressBook
             }
             return false;
         }
-        public void SearchingPersonInCity(string name)
+        public void SearchingPersonInCity(string cityName)
         {
-            foreach (var data in dictionaryName)
+            foreach (var contact in addressBook)
             {
-                 if(data.Key.Equals(name))
-                 {
-                    foreach (var contact in addressBook)
-                    {
-                        if (contact.FirstName.Equals(name))
-                        {
-                            Console.WriteLine(contact.FirstName + " " + contact.LastName + " " + contact.Address + " " + contact.City + " " + contact.State + " " + contact.EmailAddress + " " + " " + contact.PostalCode + " " + contact.MobileNumber);
-                        }
-                    }
-                   // Console.WriteLine(data.Key+" "+data.Value);
-                 }
+                if (contact.City.Equals(cityName))
+                {
+                    Console.WriteLine(contact.FirstName + " " + contact.LastName + " " + contact.Address + " " + contact.City + " " + contact.State + " " + contact.EmailAddress + " " + " " + contact.PostalCode + " " + contact.MobileNumber);
+                }
+            }
+        }
+        public void MaintingDictionaryWithCityAndPerson(string cityName)
+        {
+            cityPerson.Add("Ajay", "Basti");
+            cityPerson.Add("Vijay", "Basti");
+            cityPerson.Add("Raj", "Lucknow");
+            cityPerson.Add("Ritesh", "Allahabad");
+            cityPerson.Add("Aman", "Basti");
+            cityPerson.Add("Anuragh", "Banaras");
+            foreach (var contact in cityPerson)
+            {
+                if (contact.Value.Equals(cityName))
+                {
+                    Console.WriteLine(contact.Key + " " + contact.Value);
+                }
             }
         }
     }
