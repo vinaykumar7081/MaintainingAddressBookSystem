@@ -5,7 +5,7 @@
         List<Contact> addressBook = new List<Contact>();
         Dictionary<string, List<Contact>> dictionaryName = new Dictionary<string, List<Contact>>(); 
         Dictionary<string,string> cityPerson=new Dictionary<string,string>();
-        Dictionary<string,string> statePerson=new Dictionary<string,string>();
+       List<string> firstName=new List<string>();
         public  AddressBook()
         {
             Contact address1 = new Contact()
@@ -187,6 +187,26 @@
                 {
                     Console.WriteLine("Mobile Number is" + contact.MobileNumber);
                 }
+            }
+        }
+        public void SortingDataByPersonName()
+        {
+            string result = "";
+            foreach (var contact in addressBook)
+            {
+                result = contact.FirstName.ToString();
+                firstName.Add(result);
+            }
+            firstName.Sort();
+            foreach (var name in firstName )
+            {
+                Console.Write(name + " ");
+                foreach (var contact in addressBook)
+                {
+                    Console.Write(contact.LastName + " " + contact.Address + " " + contact.City + " " + contact.State + " " + contact.EmailAddress + " " + " " + contact.PostalCode + " " + contact.MobileNumber);
+
+                }
+                Console.WriteLine(" ");
             }
         }
     }

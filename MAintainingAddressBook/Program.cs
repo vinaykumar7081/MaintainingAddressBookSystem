@@ -53,6 +53,10 @@ public class Program
                     string enterCityName = Console.ReadLine();
                     addressBook.GetPhoneNumberByCity(enterCityName); break;
                     break;
+                case 11:
+                    
+                    addressBook.SortingDataByPersonName(); break;
+                    break;
                 case 0: check = false; break;
                     default: Console.WriteLine("Please Enter the Valid Option"); break;
             }
