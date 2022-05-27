@@ -37,21 +37,21 @@ namespace MaintainingAddressBook
                 PostalCode = 100009,
                 MobileNumber = 9722945611
             };
-            //Console.WriteLine("Enter the FirstName LastName Address City State Email postalCode mobile Number");
-            //Contact address3 = new Contact()
-            //{
-            //    FirstName = Console.ReadLine(),
-            //    LastName = Console.ReadLine(),
-            //    Address = Console.ReadLine(),
-            //    City = Console.ReadLine(),
-            //    State = Console.ReadLine(),
-            //    EmailAddress = Console.ReadLine(),
-            //    PostalCode = Convert.ToInt32(Console.ReadLine()),
-            //    MobileNumber = Convert.ToInt64(Console.ReadLine())
-            //};
-            //addressBook.Add(address1);
+            Console.WriteLine("Enter the FirstName LastName Address City State Email postalCode mobile Number");
+            Contact address3 = new Contact()
+            {
+                FirstName = Console.ReadLine(),
+                LastName = Console.ReadLine(),
+                Address = Console.ReadLine(),
+                City = Console.ReadLine(),
+                State = Console.ReadLine(),
+                EmailAddress = Console.ReadLine(),
+                PostalCode = Convert.ToInt32(Console.ReadLine()),
+                MobileNumber = Convert.ToInt64(Console.ReadLine())
+            };
+            addressBook.Add(address1);
             addressBook.Add(address2);
-           // addressBook.Add(address3);
+            addressBook.Add(address3);
         }
         public void AddContactToAddressBook(Contact contact)
         {
