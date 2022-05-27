@@ -6,6 +6,7 @@
         List<Contact> addressBook = new List<Contact>();
         Dictionary<string, List<Contact>> dictionaryName = new Dictionary<string, List<Contact>>(); 
         Dictionary<string,string> cityPerson=new Dictionary<string,string>();
+        const string FILE_PATH= @"D:\AddressBookSystem\MaintainingAddressBookSystem\MAintainingAddressBook\AddressBook.txt";
         public  AddressBook()
         {
             Contact address1 = new Contact()
@@ -30,21 +31,21 @@
                 PostalCode = 100009,
                 MobileNumber = 9722945611
             };
-            Console.WriteLine("Enter the FirstName LastName Address City State Email postalCode mobile Number");
-            Contact address3 = new Contact()
-            {
-                FirstName = Console.ReadLine(),
-                LastName = Console.ReadLine(),
-                Address = Console.ReadLine(),
-                City = Console.ReadLine(),
-                State = Console.ReadLine(),
-                EmailAddress = Console.ReadLine(),
-                PostalCode = Convert.ToInt32(Console.ReadLine()),
-                MobileNumber = Convert.ToInt64(Console.ReadLine())
-            };
+            //Console.WriteLine("Enter the FirstName LastName Address City State Email postalCode mobile Number");
+            //Contact address3 = new Contact()
+            //{
+            //    FirstName = Console.ReadLine(),
+            //    LastName = Console.ReadLine(),
+            //    Address = Console.ReadLine(),
+            //    City = Console.ReadLine(),
+            //    State = Console.ReadLine(),
+            //    EmailAddress = Console.ReadLine(),
+            //    PostalCode = Convert.ToInt32(Console.ReadLine()),
+            //    MobileNumber = Convert.ToInt64(Console.ReadLine())
+            //};
             addressBook.Add(address1);
             addressBook.Add(address2);
-            addressBook.Add(address3);
+            //addressBook.Add(address3);
         }
         public void AddContactToAddressBook(Contact contact)
         {
@@ -195,6 +196,25 @@
             foreach (var contact in result)
             {
                 Console.WriteLine(contact.FirstName + " " + contact.LastName + " " + contact.Address + " " + contact.City + " " + contact.State + " " + contact.EmailAddress + " " + " " + contact.PostalCode + " " + contact.MobileNumber);
+            }
+        }
+        public void ReaderReadingFileUsingIO()
+        {
+            if (File.Exists(FILE_PATH))
+            {
+                StreamReader read = new StreamReader(FILE_PATH);
+                try
+                {
+                    string s = "";
+                    while ((s = read.ReadLine()) != null)
+                    {
+                        Console.WriteLine(s);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
     }
