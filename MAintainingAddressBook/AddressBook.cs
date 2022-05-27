@@ -11,7 +11,6 @@ namespace MaintainingAddressBook
         Dictionary<string,string> cityPerson=new Dictionary<string,string>();
 
         const string FILE_PATH= @"D:\AddressBookSystem\MaintainingAddressBookSystem\MAintainingAddressBook\AddressBook.txt";
-        const string EXPORT_TEXT_FILE_PATH = @"D:\AddressBookSystem\MaintainingAddressBookSystem\MAintainingAddressBook\ExportTextFile.txt";
         const string IMPORT_CSV_FILE_PATH = @"D:\AddressBookSystem\MaintainingAddressBookSystem\MAintainingAddressBook\addressBook.csv";
         const string EXPORT_CSV_FILE_PATH = @"D:\AddressBookSystem\MaintainingAddressBookSystem\MAintainingAddressBook\addressBookExport.csv";
         public  AddressBook()
@@ -217,12 +216,7 @@ namespace MaintainingAddressBook
                     {
                         Console.WriteLine(s);
                     }
-                    StreamWriter writer = new StreamWriter(EXPORT_TEXT_FILE_PATH);
-                    while ((s = read.ReadLine()) != null)
-                    { 
-                    writer.WriteLine(s);
-                    }
-                    writer.Close();
+                    read.Close();
                 }
                 catch (Exception ex)
                 {
