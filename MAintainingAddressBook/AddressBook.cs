@@ -1,5 +1,8 @@
 ﻿using CsvHelper;
+using Newtonsoft.Json;
 using System.Globalization;
+using System.Text.Json;
+using JsonSerializer = Newtonsoft.Json.JsonSerializer;
 
 namespace MaintainingAddressBook
 {
@@ -11,6 +14,7 @@ namespace MaintainingAddressBook
         Dictionary<string,string> cityPerson=new Dictionary<string,string>();
 
         const string FILE_PATH= @"D:\AddressBookSystem\MaintainingAddressBookSystem\MAintainingAddressBook\AddressBook.txt";
+        const string EXPORT_JSON_FILE_PATH = @"D:\AddressBookSystem\MaintainingAddressBookSystem\MAintainingAddressBook\addressBook.json";
         const string IMPORT_CSV_FILE_PATH = @"D:\AddressBookSystem\MaintainingAddressBookSystem\MAintainingAddressBook\addressBook.csv";
         const string EXPORT_CSV_FILE_PATH = @"D:\AddressBookSystem\MaintainingAddressBookSystem\MAintainingAddressBook\addressBookExport.csv";
         public  AddressBook()
@@ -37,21 +41,21 @@ namespace MaintainingAddressBook
                 PostalCode = 100009,
                 MobileNumber = 9722945611
             };
-            Console.WriteLine("Enter the FirstName LastName Address City State Email postalCode mobile Number");
-            Contact address3 = new Contact()
-            {
-                FirstName = Console.ReadLine(),
-                LastName = Console.ReadLine(),
-                Address = Console.ReadLine(),
-                City = Console.ReadLine(),
-                State = Console.ReadLine(),
-                EmailAddress = Console.ReadLine(),
-                PostalCode = Convert.ToInt32(Console.ReadLine()),
-                MobileNumber = Convert.ToInt64(Console.ReadLine())
-            };
+            //Console.WriteLine("Enter the FirstName LastName Address City State Email postalCode mobile Number");
+            //Contact address3 = new Contact()
+            //{
+            //    FirstName = Console.ReadLine(),
+            //    LastName = Console.ReadLine(),
+            //    Address = Console.ReadLine(),
+            //    City = Console.ReadLine(),
+            //    State = Console.ReadLine(),
+            //    EmailAddress = Console.ReadLine(),
+            //    PostalCode = Convert.ToInt32(Console.ReadLine()),
+            //    MobileNumber = Convert.ToInt64(Console.ReadLine())
+            //};
             addressBook.Add(address1);
             addressBook.Add(address2);
-            addressBook.Add(address3);
+           // addressBook.Add(address3);
         }
         public void AddContactToAddressBook(Contact contact)
         {
@@ -240,6 +244,29 @@ namespace MaintainingAddressBook
                         using (var CsvExport = new CsvWriter(writer, CultureInfo.InvariantCulture))
                         {
                             CsvExport.WriteRecords(records);
+
+                        }
+                    }
+                }
+            }
+        }
+        public void ReadingDataFromCSVAndWritingDataIntoJSONFile()
+        {
+            using (var reader = new StreamReader(IMPORT_CSV_FILE_PATH))
+            {
+                using (var Csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                {
+                    var records = Csv.GetRecords<Contact>().ToList();
+                    foreach (var contact in records)
+                    {
+                        Console.WriteLine(contact.FirstName + " " + contact.LastName + " " + contact.Address + " " + contact.City + " " + contact.State + " " + contact.EmailAddress + " " + " " + contact.PostalCode + " " + contact.MobileNumber);
+                    }
+                    JsonSerializer serializer = new JsonSerializer();
+                    using (var writer = new StreamWriter(EXPORT_JSON_FILE_PATH))
+                    {
+                        using (var jsonWriter = new JsonTextWriter(writer))
+                        {
+                            serializer.Serialize(writer, records);
 
                         }
                     }

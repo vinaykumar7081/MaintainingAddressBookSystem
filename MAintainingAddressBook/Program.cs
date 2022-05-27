@@ -65,6 +65,10 @@ public class Program
                     Console.WriteLine("Displaying the Details From the CSV File ");
                     addressBook.ReadingAndWritingDataFromTheCSVFile(); break;
                     break;
+                case 15:
+                    Console.WriteLine("Displaying the Details From the JSON File ");
+                    addressBook.ReadingDataFromCSVAndWritingDataIntoJSONFile(); break;
+                    break;
                 case 0: check = false; break;
                     default: Console.WriteLine("Please Enter the Valid Option"); break;
             }
