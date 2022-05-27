@@ -1,4 +1,7 @@
-﻿namespace MaintainingAddressBook
+﻿using CsvHelper;
+using System.Globalization;
+
+namespace MaintainingAddressBook
 {
     public class AddressBook
     {
@@ -6,7 +9,11 @@
         List<Contact> addressBook = new List<Contact>();
         Dictionary<string, List<Contact>> dictionaryName = new Dictionary<string, List<Contact>>(); 
         Dictionary<string,string> cityPerson=new Dictionary<string,string>();
+
         const string FILE_PATH= @"D:\AddressBookSystem\MaintainingAddressBookSystem\MAintainingAddressBook\AddressBook.txt";
+        const string EXPORT_TEXT_FILE_PATH = @"D:\AddressBookSystem\MaintainingAddressBookSystem\MAintainingAddressBook\ExportTextFile.txt";
+        const string IMPORT_CSV_FILE_PATH = @"D:\AddressBookSystem\MaintainingAddressBookSystem\MAintainingAddressBook\addressBook.csv";
+        const string EXPORT_CSV_FILE_PATH = @"D:\AddressBookSystem\MaintainingAddressBookSystem\MAintainingAddressBook\addressBookExport.csv";
         public  AddressBook()
         {
             Contact address1 = new Contact()
@@ -31,21 +38,21 @@
                 PostalCode = 100009,
                 MobileNumber = 9722945611
             };
-            Console.WriteLine("Enter the FirstName LastName Address City State Email postalCode mobile Number");
-            Contact address3 = new Contact()
-            {
-                FirstName = Console.ReadLine(),
-                LastName = Console.ReadLine(),
-                Address = Console.ReadLine(),
-                City = Console.ReadLine(),
-                State = Console.ReadLine(),
-                EmailAddress = Console.ReadLine(),
-                PostalCode = Convert.ToInt32(Console.ReadLine()),
-                MobileNumber = Convert.ToInt64(Console.ReadLine())
-            };
-            addressBook.Add(address1);
+            //Console.WriteLine("Enter the FirstName LastName Address City State Email postalCode mobile Number");
+            //Contact address3 = new Contact()
+            //{
+            //    FirstName = Console.ReadLine(),
+            //    LastName = Console.ReadLine(),
+            //    Address = Console.ReadLine(),
+            //    City = Console.ReadLine(),
+            //    State = Console.ReadLine(),
+            //    EmailAddress = Console.ReadLine(),
+            //    PostalCode = Convert.ToInt32(Console.ReadLine()),
+            //    MobileNumber = Convert.ToInt64(Console.ReadLine())
+            //};
+            //addressBook.Add(address1);
             addressBook.Add(address2);
-            addressBook.Add(address3);
+           // addressBook.Add(address3);
         }
         public void AddContactToAddressBook(Contact contact)
         {
@@ -210,10 +217,38 @@
                     {
                         Console.WriteLine(s);
                     }
+                    StreamWriter writer = new StreamWriter(EXPORT_TEXT_FILE_PATH);
+                    while ((s = read.ReadLine()) != null)
+                    { 
+                    writer.WriteLine(s);
+                    }
+                    writer.Close();
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
+                }
+            }
+        }
+        public void ReadingAndWritingDataFromTheCSVFile()
+        {
+            using (var reader = new StreamReader(IMPORT_CSV_FILE_PATH))
+            {
+                using (var Csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                {
+                    var records = Csv.GetRecords<Contact>().ToList();
+                    foreach (var contact in records)
+                    {
+                        Console.WriteLine(contact.FirstName + " " + contact.LastName + " " + contact.Address + " " + contact.City + " " + contact.State + " " + contact.EmailAddress + " " + " " + contact.PostalCode + " " + contact.MobileNumber);
+                    }
+                    using (var writer = new StreamWriter(EXPORT_CSV_FILE_PATH))
+                    {
+                        using (var CsvExport = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                        {
+                            CsvExport.WriteRecords(records);
+
+                        }
+                    }
                 }
             }
         }
