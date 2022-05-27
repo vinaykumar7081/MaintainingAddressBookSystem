@@ -191,22 +191,11 @@
         }
         public void SortingDataByPersonName()
         {
-            string result = "";
-            foreach (var contact in addressBook)
+           var result=addressBook.OrderBy(x => x.FirstName).ToList();
+            foreach (var contact in result)
             {
-                result = contact.FirstName.ToString();
-                firstName.Add(result);
-            }
-            firstName.Sort();
-            foreach (var name in firstName )
-            {
-                Console.Write(name + " ");
-                foreach (var contact in addressBook)
-                {
-                    Console.Write(contact.LastName + " " + contact.Address + " " + contact.City + " " + contact.State + " " + contact.EmailAddress + " " + " " + contact.PostalCode + " " + contact.MobileNumber);
+                Console.WriteLine(contact.FirstName + " " + contact.LastName + " " + contact.Address + " " + contact.City + " " + contact.State + " " + contact.EmailAddress + " " + " " + contact.PostalCode + " " + contact.MobileNumber);
 
-                }
-                Console.WriteLine(" ");
             }
         }
     }
