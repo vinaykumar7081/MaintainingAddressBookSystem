@@ -2,10 +2,12 @@
 {
     public class AddressBook
     {
+        Contact contacts=new Contact();
         List<Contact> addressBook = new List<Contact>();
         Dictionary<string, List<Contact>> dictionaryName = new Dictionary<string, List<Contact>>(); 
         Dictionary<string,string> cityPerson=new Dictionary<string,string>();
-       List<string> firstName=new List<string>();
+        List<string> firstName=new List<string>();
+        List<string> cityState = new List<string>();
         public  AddressBook()
         {
             Contact address1 = new Contact()
@@ -21,13 +23,13 @@
             };
             Contact address2 = new Contact()
             {
-                FirstName = "Pramod",
+                FirstName = "Anuj",
                 LastName = "Pratap",
                 Address = "Haryana",
-                City = "Luck",
+                City = "Allahabad",
                 State = "Delhi",
                 EmailAddress = "pramod123@gmail.com",
-                PostalCode = 400009,
+                PostalCode = 100009,
                 MobileNumber = 9722945611
             };
             //Console.WriteLine("Enter the FirstName LastName Address City State Email postalCode mobile Number");
@@ -111,7 +113,7 @@
         public void AddDictionary(string name)
         {
             if (dictionaryName == null)
-            { 
+            {          
             dictionaryName .Add (name,addressBook);
             }
             if (NameExists(name) == false)
@@ -189,24 +191,13 @@
                 }
             }
         }
-        public void SortingDataByPersonName()
+        public void SortingCityAndState()
         {
-            string result = "";
-            foreach (var contact in addressBook)
+           var result= this.addressBook.OrderBy(x=>x.City).ToList();
+            foreach (var contact in result)
             {
-                result = contact.FirstName.ToString();
-                firstName.Add(result);
-            }
-            firstName.Sort();
-            foreach (var name in firstName )
-            {
-                Console.Write(name + " ");
-                foreach (var contact in addressBook)
-                {
-                    Console.Write(contact.LastName + " " + contact.Address + " " + contact.City + " " + contact.State + " " + contact.EmailAddress + " " + " " + contact.PostalCode + " " + contact.MobileNumber);
+                Console.WriteLine(contact.FirstName + " " + contact.LastName + " " + contact.Address + " " + contact.City + " " + contact.State + " " + contact.EmailAddress + " " + " " + contact.PostalCode + " " + contact.MobileNumber);
 
-                }
-                Console.WriteLine(" ");
             }
         }
     }
